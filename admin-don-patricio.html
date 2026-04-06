@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comunidad Don Patricio</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1C2B1E;--forest:#2E4A30;--sage:#5B7A5D;--cream:#F6F1E9;--warm:#EDE5D8;--parchment:#FAF7F2;--gold:#C9981A;--gold-light:#F0D070;--water:#3A7CA8;--well:#1E5874;--electric:#B87D0A;--common:#7B3FA0;--alert:#C0392B;--alert-bg:#FDECEA;--ok:#2E7D32;--ok-bg:#E8F5E9;--shadow:0 4px 24px rgba(28,43,30,.10);--shadow-lg:0 12px 48px rgba(28,43,30,.16);--r:14px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;background-image:radial-gradient(ellipse at 10% 0%,rgba(91,122,93,.1) 0%,transparent 55%),radial-gradient(ellipse at 90% 100%,rgba(58,124,168,.07) 0%,transparent 55%);}
+header{background:var(--forest);padding:.4rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:0 2px 16px rgba(0,0,0,.3);min-height:58px;flex-wrap:wrap;gap:.4rem;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-badge{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--gold),#a07010);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.logo-text h1{font-family:'Libre Baskerville',serif;color:var(--cream);font-size:1rem;line-height:1.1;}
+.logo-text span{display:block;font-size:.58rem;color:var(--gold-light);letter-spacing:.18em;text-transform:uppercase;}
+nav{display:flex;gap:2px;flex-wrap:wrap;}
+.nb{background:transparent;border:none;color:rgba(246,241,233,.65);padding:6px 11px;border-radius:7px;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.77rem;font-weight:500;transition:all .18s;display:flex;align-items:center;gap:4px;white-space:nowrap;}
+.nb:hover,.nb.active{background:rgba(201,152,26,.18);color:var(--gold-light);}
+.abadge{background:var(--alert);color:white;border-radius:50%;width:15px;height:15px;font-size:.62rem;display:flex;align-items:center;justify-content:center;font-weight:700;}
+main{max-width:1300px;margin:0 auto;padding:1.6rem 1.4rem;}
+.view{display:none;animation:fadeUp .25s ease;}
+.view.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.ph{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.6rem;}
+.pt{font-family:'Libre Baskerville',serif;font-size:1.8rem;color:var(--forest);line-height:1;}
+.ps{font-size:.83rem;color:var(--sage);margin-top:3px;}
+.card{background:rgba(255,255,255,.88);border-radius:var(--r);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.7);}
+/* STATS */
+.sr{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.9rem;margin-bottom:1.6rem;}
+.sc{background:var(--forest);border-radius:var(--r);padding:1rem 1.25rem;position:relative;overflow:hidden;box-shadow:var(--shadow);}
+.sc.light{background:white;border:1px solid rgba(91,122,93,.15);}
+.sc.purple{background:#5B2D80;}
+.sc::after{content:'';position:absolute;bottom:-18px;right:-18px;width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.05);}
+.sl{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(246,241,233,.5);margin-bottom:5px;}
+.sc.light .sl{color:var(--sage);}
+.sv{font-family:'Libre Baskerville',serif;font-size:1.5rem;color:var(--cream);line-height:1;}
+.sc.light .sv{color:var(--forest);}
+.ss{font-size:.69rem;color:rgba(246,241,233,.36);margin-top:3px;}
+.sc.light .ss{color:var(--sage);}
+.si{position:absolute;top:.85rem;right:.95rem;font-size:1.45rem;opacity:.17;}
+/* ALERT */
+.ab{background:var(--alert-bg);border:1.5px solid rgba(192,57,43,.3);border-radius:var(--r);padding:.9rem 1.1rem;margin-bottom:1.4rem;display:flex;align-items:flex-start;gap:.7rem;}
+.at{font-weight:600;font-size:.88rem;color:var(--alert);}
+.al{list-style:none;margin-top:.3rem;}
+.al li{font-size:.78rem;color:var(--ink);padding:1px 0;}
+.al li::before{content:'• ';color:var(--alert);}
+/* COMMON BANNER */
+.cmb{background:linear-gradient(135deg,rgba(91,45,128,.08),rgba(91,45,128,.03));border:1.5px solid rgba(123,63,160,.22);border-radius:var(--r);padding:.95rem 1.2rem;margin-bottom:1.4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.7rem;}
+.cmb-title{font-family:'Libre Baskerville',serif;font-size:.95rem;color:var(--common);}
+.cmb-sub{font-size:.73rem;color:var(--sage);margin-top:2px;}
+.cmb-amount{font-family:'Libre Baskerville',serif;font-size:1.4rem;color:var(--common);}
+.cmb-per{font-size:.72rem;color:var(--sage);}
+/* PARCELA CARD */
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(308px,1fr));gap:1.1rem;}
+.pc{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);background:white;transition:transform .2s,box-shadow .2s;}
+.pc:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);}
+.pch{background:var(--forest);padding:.85rem 1.1rem;display:flex;align-items:center;justify-content:space-between;}
+.pct{font-family:'Libre Baskerville',serif;color:var(--cream);font-size:.97rem;}
+.pco{font-size:.7rem;color:var(--gold-light);margin-top:2px;}
+.sp{padding:3px 9px;border-radius:20px;font-size:.67rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
+.sp-ok{background:rgba(46,125,50,.25);color:#81C784;}
+.sp-late{background:rgba(192,57,43,.3);color:#EF9A9A;}
+.sp-partial{background:rgba(201,152,26,.25);color:var(--gold-light);}
+.sp-pend{background:rgba(255,255,255,.1);color:rgba(246,241,233,.55);}
+.crw{padding:.7rem 1.1rem;}
+.cr{display:flex;align-items:center;justify-content:space-between;padding:.48rem 0;border-bottom:1px solid rgba(0,0,0,.05);}
+.cr:last-child{border-bottom:none;}
+.crl{display:flex;align-items:center;gap:.55rem;}
+.cd{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.cd-e{background:var(--electric);}
+.cd-w{background:var(--water);}
+.cd-p{background:var(--well);}
+.cd-c{background:var(--common);}
+.cn{font-size:.8rem;}
+.crr{display:flex;align-items:center;gap:.45rem;}
+.ca{font-weight:600;font-size:.86rem;color:var(--forest);}
+.ca.paid{color:var(--ok);}
+.mt{font-size:.64rem;padding:2px 6px;border-radius:7px;}
+.mt-ok{background:var(--ok-bg);color:var(--ok);}
+.mt-late{background:var(--alert-bg);color:var(--alert);}
+.mt-pend{background:rgba(0,0,0,.06);color:var(--sage);}
+.pcf{padding:.65rem 1.1rem;background:var(--warm);display:flex;align-items:center;justify-content:space-between;}
+.ft{font-family:'Libre Baskerville',serif;font-size:1.1rem;color:var(--forest);}
+.fl2{font-size:.66rem;color:var(--sage);font-weight:600;text-transform:uppercase;letter-spacing:.07em;}
+.br{display:flex;gap:.4rem;}
+/* BUTTONS */
+.btn{border:none;border-radius:8px;cursor:pointer;font-family:'Outfit',sans-serif;font-weight:500;transition:all .17s;display:inline-flex;align-items:center;gap:5px;padding:7px 14px;font-size:.81rem;}
+.btn-gold{background:var(--gold);color:white;font-weight:600;}
+.btn-gold:hover{background:#a07010;}
+.btn-purple{background:var(--common);color:white;font-weight:600;}
+.btn-purple:hover{background:#5B2D80;}
+.btn-water{background:var(--water);color:white;font-weight:600;}
+.btn-water:hover{background:var(--well);}
+.btn-ghost{background:transparent;color:var(--sage);border:1.5px solid rgba(91,122,93,.3);}
+.btn-ghost:hover{background:rgba(91,122,93,.08);color:var(--forest);}
+.btn-danger{background:transparent;color:var(--alert);border:1.5px solid rgba(192,57,43,.3);}
+.btn-sm{padding:4px 10px;font-size:.73rem;border-radius:6px;}
+/* OVERLAY */
+.ov{display:none;position:fixed;inset:0;background:rgba(28,43,30,.72);z-index:500;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(5px);}
+.ov.open{display:flex;}
+.modal{background:var(--parchment);border-radius:16px;width:100%;max-width:640px;max-height:92vh;overflow-y:auto;box-shadow:var(--shadow-lg);}
+.modal-lg{max-width:860px;}
+.mh{background:var(--forest);padding:1rem 1.4rem;border-radius:16px 16px 0 0;display:flex;align-items:center;justify-content:space-between;}
+.mh.purple-h{background:#5B2D80;}
+.mht{font-family:'Libre Baskerville',serif;color:var(--cream);font-size:1.05rem;}
+.mx{background:none;border:none;color:var(--cream);font-size:1.5rem;cursor:pointer;opacity:.65;line-height:1;}
+.mx:hover{opacity:1;}
+.mb{padding:1.4rem;}
+.mf{padding:.9rem 1.4rem;border-top:1px solid rgba(0,0,0,.07);display:flex;gap:.65rem;justify-content:flex-end;}
+/* FORM */
+.fg{margin-bottom:1.05rem;}
+.label{display:block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);margin-bottom:4px;}
+.fi{width:100%;padding:.58rem .85rem;border:1.5px solid rgba(91,122,93,.22);border-radius:8px;font-family:'Outfit',sans-serif;font-size:.88rem;background:white;color:var(--ink);outline:none;transition:border-color .17s;}
+.fi:focus{border-color:var(--sage);}
+.fr2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+.fr3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;}
+.sep{border:none;border-top:1px solid rgba(0,0,0,.08);margin:1.1rem 0;}
+/* UPLOAD */
+.ug3{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-top:.5rem;}
+.ug4{display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem;margin-top:.5rem;}
+.us{border:2px dashed rgba(91,122,93,.28);border-radius:10px;padding:1rem .5rem;text-align:center;cursor:pointer;transition:all .2s;background:rgba(91,122,93,.03);position:relative;min-height:115px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.us:hover,.us.drag{border-color:var(--sage);background:rgba(91,122,93,.07);}
+.us.pslot{border-color:rgba(123,63,160,.28);background:rgba(123,63,160,.03);}
+.us.pslot:hover,.us.pslot.drag{border-color:var(--common);background:rgba(123,63,160,.07);}
+.us input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.ui{font-size:1.45rem;margin-bottom:3px;}
+.ulbl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:2px;}
+.ulbl.e{color:var(--electric);}
+.ulbl.w{color:var(--water);}
+.ulbl.p{color:var(--well);}
+.ulbl.c{color:var(--common);}
+.uhint{font-size:.65rem;color:var(--sage);}
+.uprev{width:100%;height:78px;object-fit:cover;border-radius:6px;display:none;margin-top:5px;}
+.uread{margin-top:5px;font-family:'Libre Baskerville',serif;font-size:.88rem;color:var(--forest);background:rgba(91,122,93,.1);border-radius:5px;padding:2px 7px;display:none;}
+.uread.p{background:rgba(123,63,160,.1);color:var(--common);}
+.uspin{display:none;width:20px;height:20px;border:2.5px solid rgba(91,122,93,.2);border-top-color:var(--sage);border-radius:50%;animation:spin .75s linear infinite;margin:5px auto;}
+@keyframes spin{to{transform:rotate(360deg);}}
+/* AI BOX */
+.aib{background:linear-gradient(135deg,rgba(58,124,168,.07),rgba(46,74,48,.05));border:1px solid rgba(58,124,168,.17);border-radius:11px;padding:.9rem 1.1rem;margin-top:.9rem;display:none;}
+.aib.vis{display:block;}
+.aibt{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--water);margin-bottom:.7rem;}
+.aig3{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;}
+.aig4{display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem;}
+.ari{text-align:center;}
+.art{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--sage);margin-bottom:3px;}
+.arv{font-family:'Libre Baskerville',serif;font-size:1.1rem;color:var(--forest);margin-bottom:3px;}
+.aru{font-size:.68rem;color:var(--sage);}
+.are input{width:100%;text-align:center;padding:4px 5px;border:1.5px solid rgba(91,122,93,.23);border-radius:6px;font-family:'Outfit',sans-serif;font-size:.82rem;background:white;outline:none;}
+.are input:focus{border-color:var(--sage);}
+/* CG */
+.cgc{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);margin-bottom:1.1rem;border:1px solid rgba(255,255,255,.7);background:white;}
+.cgh{padding:.9rem 1.1rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(0,0,0,.06);}
+.cgt{font-family:'Libre Baskerville',serif;font-size:.97rem;color:var(--forest);}
+.cga{font-family:'Libre Baskerville',serif;font-size:1.25rem;color:var(--forest);}
+.cgb{padding:.9rem 1.1rem;}
+.dr{display:flex;align-items:center;justify-content:space-between;padding:.42rem 0;border-bottom:1px solid rgba(0,0,0,.04);font-size:.8rem;}
+.dr:last-child{border-bottom:none;}
+.dp{color:var(--ink);font-weight:500;}
+.dpct{color:var(--sage);font-size:.73rem;}
+.da{font-weight:600;color:var(--forest);}
+/* TABS */
+.tabs{display:flex;gap:.35rem;margin-bottom:1.1rem;border-bottom:2px solid rgba(91,122,93,.14);flex-wrap:wrap;}
+.tab{background:none;border:none;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:500;color:var(--sage);padding:7px 13px;border-radius:7px 7px 0 0;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .17s;}
+.tab.active{color:var(--forest);border-bottom-color:var(--forest);font-weight:600;}
+.tab.ptab.active{color:var(--common);border-bottom-color:var(--common);}
+.tabp{display:none;}
+.tabp.active{display:block;}
+/* REPORT */
+.rsum{background:var(--forest);border-radius:var(--r);padding:1.1rem 1.6rem;margin-bottom:1.3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.9rem;}
+.rtitle{font-family:'Libre Baskerville',serif;color:var(--cream);font-size:1.35rem;}
+.rsub{color:var(--gold-light);font-size:.78rem;margin-top:2px;}
+.rtotal{font-family:'Libre Baskerville',serif;color:var(--gold-light);font-size:1.9rem;}
+.rtbl{width:100%;border-collapse:collapse;background:white;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);font-size:.8rem;}
+.rtbl th{background:var(--forest);color:rgba(246,241,233,.8);padding:.62rem .8rem;text-align:left;font-size:.69rem;font-weight:600;letter-spacing:.06em;}
+.rtbl th.pth{background:#5B2D80;}
+.rtbl td{padding:.62rem .8rem;border-bottom:1px solid rgba(0,0,0,.05);vertical-align:middle;}
+.rtbl tbody tr:hover td{background:rgba(91,122,93,.04);}
+.rtbl tfoot td{background:var(--warm);font-weight:700;border-top:2px solid rgba(91,122,93,.18);}
+/* HIST */
+.hi{background:white;border-radius:10px;padding:.82rem 1rem;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 10px rgba(28,43,30,.07);margin-bottom:.55rem;flex-wrap:wrap;gap:.45rem;}
+.hii{display:flex;align-items:center;gap:.65rem;}
+.hico{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;}
+.hie{background:rgba(184,125,10,.12);}
+.hiw{background:rgba(58,124,168,.12);}
+.hip{background:rgba(30,88,116,.12);}
+.hic{background:rgba(123,63,160,.12);}
+.hipay{background:rgba(46,125,50,.12);}
+.hn{font-weight:600;font-size:.85rem;}
+.hs{font-size:.72rem;color:var(--sage);}
+.ha{font-family:'Libre Baskerville',serif;font-size:1rem;color:var(--forest);}
+.ha.credit{color:var(--ok);}
+/* MONTH SEL */
+.ms{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;}
+.ms select{padding:5px 9px;border:1.5px solid rgba(91,122,93,.2);border-radius:8px;font-family:'Outfit',sans-serif;font-size:.83rem;background:white;color:var(--ink);outline:none;cursor:pointer;}
+/* COMMON METER SECTION */
+.cm-section{background:linear-gradient(135deg,rgba(91,45,128,.07),rgba(91,45,128,.02));border:2px solid rgba(123,63,160,.22);border-radius:var(--r);padding:1.35rem;margin-bottom:1.4rem;}
+.cm-head{display:flex;align-items:center;gap:.7rem;margin-bottom:1.1rem;}
+.cm-badge{width:34px;height:34px;border-radius:9px;background:var(--common);display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+.cm-title{font-family:'Libre Baskerville',serif;font-size:1rem;color:var(--common);}
+.cm-sub{font-size:.73rem;color:var(--sage);}
+.cm-calc{display:flex;flex-direction:column;justify-content:center;gap:.45rem;padding:.7rem .95rem;background:rgba(123,63,160,.06);border-radius:9px;}
+/* EMPTY */
+.empty{text-align:center;padding:2.5rem 1rem;color:var(--sage);}
+.empty .ei{font-size:2.3rem;opacity:.32;margin-bottom:.65rem;}
+/* TOAST */
+.toast{position:fixed;bottom:1.6rem;right:1.6rem;padding:.65rem 1.2rem;border-radius:9px;background:var(--forest);color:var(--cream);font-size:.86rem;box-shadow:var(--shadow-lg);z-index:9999;transform:translateY(80px);opacity:0;transition:all .27s;max-width:350px;line-height:1.4;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast.ok{border-left:4px solid #81C784;}
+.toast.err{border-left:4px solid #EF9A9A;}
+.toast.inf{border-left:4px solid #6AAED4;}
+/* INFO BOX */
+.ibox{background:rgba(58,124,168,.06);border:1px solid rgba(58,124,168,.18);border-radius:11px;padding:.85rem 1.1rem;margin-bottom:1.3rem;font-size:.8rem;color:var(--ink);line-height:1.6;}
+.ibox strong{color:var(--well);}
+/* CONFIG TABLE */
+.cfg-table{width:100%;border-collapse:collapse;}
+.cfg-table th{background:var(--forest);color:rgba(246,241,233,.8);padding:.6rem .85rem;text-align:left;font-size:.7rem;font-weight:600;letter-spacing:.06em;}
+.cfg-table td{padding:.7rem .85rem;border-bottom:1px solid rgba(0,0,0,.06);font-size:.88rem;vertical-align:middle;}
+.cfg-table tr:last-child td{border-bottom:none;}
+.cfg-table tbody tr:hover td{background:rgba(91,122,93,.04);}
+.cfg-num{font-family:'Libre Baskerville',serif;font-size:1.3rem;color:var(--forest);width:40px;text-align:center;}
+.cfg-nombre{font-weight:600;color:var(--forest);}
+.cfg-prop{color:var(--sage);font-size:.82rem;}
+@media(max-width:680px){.fr2,.fr3,.ug3,.ug4,.aig3,.aig4{grid-template-columns:1fr;}.rtbl{font-size:.73rem;}.rtbl th,.rtbl td{padding:.48rem .55rem;}.nb{padding:5px 7px;font-size:.72rem;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-badge">🌿</div>
+    <div class="logo-text"><h1>Don Patricio</h1><span>Gestión de Comunidad</span></div>
+  </div>
+  <nav>
+    <button class="nb active" onclick="showView('dashboard')" id="nav-dashboard">📊 Dashboard</button>
+    <button class="nb" onclick="showView('medidores')" id="nav-medidores">📷 Medidores</button>
+    <button class="nb" onclick="showView('cuentas')" id="nav-cuentas">🧾 Cuentas</button>
+    <button class="nb" onclick="showView('parcelas')" id="nav-parcelas">🏡 Parcelas</button>
+    <button class="nb" onclick="showView('reporte')" id="nav-reporte">📄 Reportes</button>
+    <button class="nb" onclick="showView('historial')" id="nav-historial">📋 Historial <span class="abadge" id="alert-count" style="display:none">0</span></button>
+    <button class="nb" onclick="showView('config')" id="nav-config">⚙️ Config <span class="abadge" id="pending-badge" style="display:none;background:var(--water);">0</span></button>
+  </nav>
+</header>
+
+<main>
+
+<!-- DASHBOARD -->
+<div class="view active" id="view-dashboard">
+  <div class="ph">
+    <div><div class="pt">Dashboard General</div><div class="ps">Resumen mensual · <span id="dash-mes-label"></span></div></div>
+    <div class="ms"><select id="dash-mes" onchange="onMonthChange()"></select><select id="dash-anio" onchange="onMonthChange()"></select></div>
+  </div>
+  <div id="alert-banners"></div>
+  <div id="pending-banner-dash"></div>
+  <div class="cmb" id="cmb-dash">
+    <div class="cml">
+      <div style="display:flex;align-items:center;gap:.65rem;">
+        <div style="font-size:1.7rem;">🏮</div>
+        <div><div class="cmb-title">Áreas Comunes · Remarcador Eléctrico</div><div class="cmb-sub">Prorrateado en partes iguales · 9 parcelas</div></div>
+      </div>
+    </div>
+    <div style="text-align:right;"><div class="cmb-amount" id="cmb-total">$0</div><div class="cmb-per" id="cmb-per">$0 / parcela</div></div>
+  </div>
+  <div class="sr">
+    <div class="sc"><div class="si">⚡</div><div class="sl">Electricidad individual</div><div class="sv">$<span id="s-elec">0</span></div><div class="ss">Remarcadores CGE</div></div>
+    <div class="sc purple"><div class="si">🏮</div><div class="sl">Áreas Comunes</div><div class="sv">$<span id="s-common">0</span></div><div class="ss">Repartido entre 9</div></div>
+    <div class="sc"><div class="si">💧</div><div class="sl">Agua Potable</div><div class="sv">$<span id="s-agua">0</span></div><div class="ss">Aguas Andinas</div></div>
+    <div class="sc"><div class="si">🪣</div><div class="sl">Agua de Pozo</div><div class="sv">$<span id="s-pozo">0</span></div><div class="ss">Bombeo eléctrico</div></div>
+    <div class="sc light"><div class="si">💰</div><div class="sl">Total facturado</div><div class="sv">$<span id="s-total">0</span></div><div class="ss" id="s-pagado">0/9 al día</div></div>
+  </div>
+  <div class="pg" id="dash-parcelas"></div>
+</div>
+
+<!-- MEDIDORES -->
+<div class="view" id="view-medidores">
+  <div class="ph"><div><div class="pt">Lectura de Medidores</div><div class="ps">Sube las fotos — la IA lee los valores automáticamente</div></div></div>
+
+  <!-- Individual -->
+  <div class="card" style="padding:1.4rem;margin-bottom:1.4rem;">
+    <div style="font-family:'Libre Baskerville',serif;font-size:1rem;color:var(--forest);margin-bottom:1rem;">Medidores de la Parcela</div>
+    <div class="fr3" style="margin-bottom:1.1rem;">
+      <div class="fg" style="margin:0;"><label class="label">Parcela</label><select class="fi" id="med-parcela"></select></div>
+      <div class="fg" style="margin:0;"><label class="label">Mes</label><select class="fi" id="med-mes"></select></div>
+      <div class="fg" style="margin:0;"><label class="label">Año</label><select class="fi" id="med-anio"></select></div>
+    </div>
+    <label class="label" style="margin-bottom:7px;">3 Fotos de medidores individuales</label>
+    <div class="ug3">
+      <div class="us" id="slot-e" ondragover="dov(event,'e')" ondragleave="dlv('e')" ondrop="ddr(event,'e')">
+        <input type="file" accept="image/*" id="file-e" onchange="hslot('e',this)">
+        <div class="ui">⚡</div><div class="ulbl e">Electricidad</div><div class="uhint">Remarcador kWh</div>
+        <img id="prev-e" class="uprev"><div class="uspin" id="spin-e"></div><div class="uread" id="read-e"></div>
+      </div>
+      <div class="us" id="slot-w" ondragover="dov(event,'w')" ondragleave="dlv('w')" ondrop="ddr(event,'w')">
+        <input type="file" accept="image/*" id="file-w" onchange="hslot('w',this)">
+        <div class="ui">💧</div><div class="ulbl w">Agua Potable</div><div class="uhint">Medidor m³</div>
+        <img id="prev-w" class="uprev"><div class="uspin" id="spin-w"></div><div class="uread" id="read-w"></div>
+      </div>
+      <div class="us" id="slot-p" ondragover="dov(event,'p')" ondragleave="dlv('p')" ondrop="ddr(event,'p')">
+        <input type="file" accept="image/*" id="file-p" onchange="hslot('p',this)">
+        <div class="ui">🪣</div><div class="ulbl p">Agua de Pozo</div><div class="uhint">Medidor m³</div>
+        <img id="prev-p" class="uprev"><div class="uspin" id="spin-p"></div><div class="uread" id="read-p"></div>
+      </div>
+    </div>
+    <div class="aib" id="ai-box">
+      <div class="aibt">✨ Lecturas individuales detectadas — confirma o corrige</div>
+      <div class="aig3">
+        <div class="ari"><div class="art" style="color:var(--electric);">⚡ Electricidad</div><div class="arv"><span id="ai-val-e">—</span> <span class="aru">kWh</span></div><div class="are"><input type="number" id="conf-e" placeholder="kWh"></div></div>
+        <div class="ari"><div class="art" style="color:var(--water);">💧 Agua Potable</div><div class="arv"><span id="ai-val-w">—</span> <span class="aru">m³</span></div><div class="are"><input type="number" id="conf-w" placeholder="m³"></div></div>
+        <div class="ari"><div class="art" style="color:var(--well);">🪣 Agua de Pozo</div><div class="arv"><span id="ai-val-p">—</span> <span class="aru">m³</span></div><div class="are"><input type="number" id="conf-p" placeholder="m³"></div></div>
+      </div>
+    </div>
+    <div style="margin-top:1.1rem;display:flex;gap:.65rem;flex-wrap:wrap;">
+      <button class="btn btn-gold" onclick="guardarLecturas()">💾 Guardar lecturas de parcela</button>
+      <button class="btn btn-ghost" onclick="resetMedidores()">↺ Limpiar</button>
+    </div>
+  </div>
+
+  <!-- AREAS COMUNES -->
+  <div class="cm-section">
+    <div class="cm-head">
+      <div class="cm-badge">🏮</div>
+      <div><div class="cm-title">Remarcador Áreas Comunes</div><div class="cm-sub">Luces y electricidad de zonas compartidas · se prorratea en 9 partes iguales</div></div>
+    </div>
+    <div class="fr2" style="margin-bottom:.9rem;">
+      <div class="fg" style="margin:0;"><label class="label">Mes</label><select class="fi" id="com-mes"></select></div>
+      <div class="fg" style="margin:0;"><label class="label">Año</label><select class="fi" id="com-anio"></select></div>
+    </div>
+    <label class="label" style="margin-bottom:7px;">Foto del remarcador de áreas comunes</label>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.7rem;">
+      <div class="us pslot" id="slot-c" ondragover="dov(event,'c')" ondragleave="dlv('c')" ondrop="ddr(event,'c')">
+        <input type="file" accept="image/*" id="file-c" onchange="hslot('c',this)">
+        <div class="ui">🏮</div><div class="ulbl c">Áreas Comunes</div><div class="uhint">Remarcador kWh</div>
+        <img id="prev-c" class="uprev"><div class="uspin" id="spin-c"></div><div class="uread p" id="read-c"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.65rem;justify-content:center;">
+        <div><label class="label">Lectura actual (kWh)</label><input type="number" class="fi" id="conf-c" placeholder="kWh (IA o manual)" oninput="updateCommonCost()"></div>
+        <div><label class="label">Tarifa CGE ($/kWh)</label><input type="number" class="fi" id="com-tarifa" placeholder="$ por kWh" oninput="updateCommonCost()"></div>
+      </div>
+      <div class="cm-calc">
+        <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--common);">Cálculo automático</div>
+        <div id="com-consumo-lbl" style="font-size:.78rem;color:var(--sage);">Consumo: — kWh</div>
+        <div id="com-total-lbl" style="font-family:'Libre Baskerville',serif;font-size:1.3rem;color:var(--common);">$0 total</div>
+        <div id="com-per-lbl" style="font-size:.78rem;color:var(--sage);">$0 / parcela</div>
+      </div>
+    </div>
+    <div style="margin-top:.9rem;"><button class="btn btn-purple" onclick="guardarCommon()">🏮 Guardar Áreas Comunes</button></div>
+  </div>
+</div>
+
+<!-- CUENTAS GENERALES -->
+<div class="view" id="view-cuentas">
+  <div class="ph">
+    <div><div class="pt">Cuentas Generales</div><div class="ps">Boletas CGE, Aguas Andinas y Áreas Comunes</div></div>
+    <div class="ms"><select id="cg-mes" onchange="renderCG()"></select><select id="cg-anio" onchange="renderCG()"></select></div>
+  </div>
+  <div class="ibox">
+    <strong>⚡ CGE:</strong> Se divide según kWh consumidos por cada remarcador individual ·
+    <strong>🏮 Áreas Comunes:</strong> Se divide en <strong>9 partes iguales</strong> independiente del consumo ·
+    <strong>💧 Aguas Andinas 1 y 2:</strong> Se divide según m³ de agua potable de cada parcela ·
+    <strong>🪣 Pozo:</strong> Costo de bombeo dividido según m³ de agua de pozo de cada parcela
+  </div>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('cge',event)">⚡ CGE</button>
+    <button class="tab ptab" onclick="switchTab('common',event)">🏮 Áreas Comunes</button>
+    <button class="tab" onclick="switchTab('aguas1',event)">💧 Aguas Andinas 1</button>
+    <button class="tab" onclick="switchTab('aguas2',event)">💧 Aguas Andinas 2</button>
+    <button class="tab" onclick="switchTab('pozo',event)">🪣 Pozo</button>
+  </div>
+  <div class="tabp active" id="tp-cge"><div id="cg-cge-body"></div></div>
+  <div class="tabp" id="tp-common"><div id="cg-common-body"></div></div>
+  <div class="tabp" id="tp-aguas1"><div id="cg-aguas1-body"></div></div>
+  <div class="tabp" id="tp-aguas2"><div id="cg-aguas2-body"></div></div>
+  <div class="tabp" id="tp-pozo"><div id="cg-pozo-body"></div></div>
+</div>
+
+<!-- PARCELAS -->
+<div class="view" id="view-parcelas">
+  <div class="ph">
+    <div><div class="pt">Parcelas</div><div class="ps">Incluye áreas comunes · 4 cuentas por parcela</div></div>
+    <div style="display:flex;gap:.7rem;align-items:center;flex-wrap:wrap;">
+      <div class="ms"><select id="par-mes" onchange="renderParcelas()"></select><select id="par-anio" onchange="renderParcelas()"></select></div>
+      <button class="btn btn-gold" onclick="openPagoModal()">💳 Registrar Pago</button>
+    </div>
+  </div>
+  <div id="alert-banners-par"></div>
+  <div class="pg" id="parcelas-grid"></div>
+</div>
+
+<!-- REPORTES -->
+<div class="view" id="view-reporte">
+  <div class="ph">
+    <div><div class="pt">Reportes Mensuales</div><div class="ps">Detalle completo incluyendo áreas comunes</div></div>
+    <div style="display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;">
+      <div class="ms"><select id="rep-mes" onchange="renderReporte()"></select><select id="rep-anio" onchange="renderReporte()"></select></div>
+      <button class="btn btn-ghost" onclick="exportCSV()">📥 CSV</button>
+    </div>
+  </div>
+  <div id="reporte-body"></div>
+</div>
+
+<!-- HISTORIAL -->
+<div class="view" id="view-historial">
+  <div class="ph"><div><div class="pt">Historial</div><div class="ps">Lecturas, boletas y pagos registrados</div></div></div>
+  <div id="hist-list"></div>
+</div>
+
+<!-- CONFIG -->
+<div class="view" id="view-config">
+  <div class="ph">
+    <div><div class="pt">Configuración</div><div class="ps">Supabase, parcelas y ajustes de la comunidad</div></div>
+  </div>
+
+  <!-- SUPABASE SETUP -->
+  <div class="card" style="padding:1.4rem;margin-bottom:1.25rem;border-left:4px solid var(--water);">
+    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.9rem;flex-wrap:wrap;">
+      <div style="width:34px;height:34px;border-radius:9px;background:var(--water);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">☁️</div>
+      <div style="flex:1;">
+        <div style="font-family:'Libre Baskerville',serif;font-size:1rem;color:var(--water);">Conexión Supabase</div>
+        <div style="font-size:.78rem;color:var(--sage);">Configura tu base de datos gratuita para recibir reportes online de los vecinos</div>
+      </div>
+      <span id="sb-status-badge" style="font-size:.72rem;padding:3px 10px;border-radius:20px;background:rgba(0,0,0,.07);color:var(--sage);">Sin configurar</span>
+    </div>
+
+    <div style="background:rgba(58,124,168,.06);border:1px solid rgba(58,124,168,.18);border-radius:10px;padding:.85rem 1rem;margin-bottom:1rem;font-size:.79rem;line-height:1.7;color:#1C2B1E;">
+      <strong style="color:var(--well);">⚡ Configuración en 3 pasos:</strong><br>
+      1. Entra a <a href="https://supabase.com" target="_blank" style="color:var(--water);">supabase.com</a> → Crea una cuenta gratuita → "New project"<br>
+      2. En tu proyecto: <strong>SQL Editor</strong> → ejecuta el script de abajo → luego <strong>Settings → API</strong> y copia la URL y anon key<br>
+      3. Pega los datos aquí → guarda → comparte el link con los vecinos
+    </div>
+
+    <div style="background:#1C2B1E;border-radius:9px;padding:.85rem 1rem;font-family:monospace;font-size:.72rem;color:#81C784;margin-bottom:1rem;line-height:1.8;overflow-x:auto;">
+      -- Ejecuta esto en el SQL Editor de Supabase:<br>
+      CREATE TABLE lecturas_pendientes (<br>
+      &nbsp;&nbsp;id bigint generated always as identity primary key,<br>
+      &nbsp;&nbsp;parcela_id integer,<br>
+      &nbsp;&nbsp;parcela_nombre text,<br>
+      &nbsp;&nbsp;propietario text,<br>
+      &nbsp;&nbsp;mes integer,<br>
+      &nbsp;&nbsp;anio integer,<br>
+      &nbsp;&nbsp;lecturas jsonb,<br>
+      &nbsp;&nbsp;estado text default 'pendiente',<br>
+      &nbsp;&nbsp;enviado_en timestamptz default now()<br>
+      );<br>
+      ALTER TABLE lecturas_pendientes ENABLE ROW LEVEL SECURITY;<br>
+      CREATE POLICY "insert_public" ON lecturas_pendientes FOR INSERT WITH CHECK (true);<br>
+      CREATE POLICY "select_anon" ON lecturas_pendientes FOR SELECT USING (true);<br>
+      CREATE POLICY "update_anon" ON lecturas_pendientes FOR UPDATE USING (true);
+    </div>
+
+    <div class="fr2" style="margin-bottom:.85rem;">
+      <div class="fg" style="margin:0;"><label class="label">Project URL</label><input type="text" class="fi" id="sb-url" placeholder="https://xxxx.supabase.co" oninput="sbChanged()"></div>
+      <div class="fg" style="margin:0;"><label class="label">Anon Key</label><input type="text" class="fi" id="sb-key" placeholder="eyJhbGciOiJ..." oninput="sbChanged()"></div>
+    </div>
+    <div style="display:flex;gap:.65rem;flex-wrap:wrap;align-items:center;">
+      <button class="btn btn-water btn-sm" onclick="guardarSB()">💾 Guardar y probar conexión</button>
+      <button class="btn btn-ghost btn-sm" onclick="generarLink()">🔗 Generar link para vecinos</button>
+      <span id="sb-test-result" style="font-size:.78rem;"></span>
+    </div>
+    <div id="sb-link-box" style="display:none;margin-top:.85rem;background:rgba(58,124,168,.07);border-radius:9px;padding:.75rem 1rem;">
+      <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--water);margin-bottom:.4rem;">Link del formulario para vecinos</div>
+      <div id="sb-link-text" style="font-size:.75rem;word-break:break-all;color:var(--ink);background:white;padding:.5rem .75rem;border-radius:7px;margin-bottom:.5rem;font-family:monospace;"></div>
+      <button class="btn btn-ghost btn-sm" style="width:auto;" onclick="copiarLink()">📋 Copiar link</button>
+    </div>
+  </div>
+
+  <!-- PENDING REPORTES -->
+  <div class="card" style="padding:1.4rem;margin-bottom:1.25rem;" id="pending-card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.85rem;flex-wrap:wrap;gap:.5rem;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:1rem;color:var(--forest);">📲 Reportes de vecinos pendientes</div>
+      <button class="btn btn-ghost btn-sm" onclick="cargarPendientes()">↺ Actualizar</button>
+    </div>
+    <div id="pending-list"><div style="font-size:.82rem;color:var(--sage);">Configura Supabase para ver los reportes</div></div>
+  </div>
+
+  <!-- PARCELAS TABLE -->
+  <div class="card" style="padding:1.4rem;">
+    <div style="font-family:'Libre Baskerville',serif;font-size:1rem;color:var(--forest);margin-bottom:.2rem;">Parcelas de la Comunidad</div>
+    <div style="font-size:.8rem;color:var(--sage);margin-bottom:1.2rem;">Edita nombres y propietarios. Los cambios se reflejan en toda la app.</div>
+    <div id="config-table"></div>
+  </div>
+</div>
+</main>
+
+<!-- MODAL EDITAR PARCELA -->
+<div class="ov" id="ov-edit-parcela">
+  <div class="modal">
+    <div class="mh"><span class="mht" id="edit-p-title">Editar Parcela</span><button class="mx" onclick="closeOv('ov-edit-parcela')">×</button></div>
+    <div class="mb">
+      <div class="fg">
+        <label class="label">Número / Nombre de la Parcela</label>
+        <input type="text" class="fi" id="edit-p-nombre" placeholder="Ej: Parcela 1, Lote A, etc.">
+        <div style="font-size:.72rem;color:var(--sage);margin-top:.3rem;">Nombre identificador de la propiedad</div>
+      </div>
+      <div class="fg">
+        <label class="label">Propietario / Familia</label>
+        <input type="text" class="fi" id="edit-p-propietario" placeholder="Ej: Familia García, Juan Pérez">
+      </div>
+    </div>
+    <div class="mf">
+      <button class="btn btn-danger" onclick="closeOv('ov-edit-parcela')">Cancelar</button>
+      <button class="btn btn-gold" onclick="guardarParcela()">Guardar Cambios</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PREVIEW IMPORTACIÓN -->
+<div class="ov" id="ov-import-preview">
+  <div class="modal">
+    <div class="mh" style="background:#5B2D80;"><span class="mht">📲 Confirmar importación</span><button class="mx" onclick="closeOv('ov-import-preview')">×</button></div>
+    <div class="mb">
+      <div id="import-preview-content"></div>
+    </div>
+    <div class="mf">
+      <button class="btn btn-danger" onclick="closeOv('ov-import-preview')">Cancelar</button>
+      <button class="btn btn-gold" onclick="confirmarImportacion()">✅ Confirmar e Importar</button>
+    </div>
+  </div>
+</div>
+<div class="ov" id="ov-pago">
+  <div class="modal">
+    <div class="mh"><span class="mht">💳 Registrar Pago</span><button class="mx" onclick="closeOv('ov-pago')">×</button></div>
+    <div class="mb">
+      <div class="fr2">
+        <div class="fg"><label class="label">Parcela</label><select class="fi" id="pg-parcela"></select></div>
+        <div class="fg"><label class="label">Tipo de Cuenta</label>
+          <select class="fi" id="pg-tipo">
+            <option value="electric">⚡ Electricidad</option>
+            <option value="common">🏮 Áreas Comunes</option>
+            <option value="water">💧 Agua Potable</option>
+            <option value="well">🪣 Agua de Pozo</option>
+          </select>
+        </div>
+      </div>
+      <div class="fr2">
+        <div class="fg"><label class="label">Mes</label><select class="fi" id="pg-mes"></select></div>
+        <div class="fg"><label class="label">Año</label><select class="fi" id="pg-anio"></select></div>
+      </div>
+      <div class="fr2">
+        <div class="fg"><label class="label">Monto ($)</label><input type="number" class="fi" id="pg-monto" placeholder="0"></div>
+        <div class="fg"><label class="label">Método</label>
+          <select class="fi" id="pg-metodo">
+            <option value="transferencia">Transferencia</option>
+            <option value="efectivo">Efectivo</option>
+            <option value="cheque">Cheque</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg"><label class="label">Referencia / Comprobante</label><input type="text" class="fi" id="pg-ref" placeholder="N° transferencia..."></div>
+    </div>
+    <div class="mf"><button class="btn btn-danger" onclick="closeOv('ov-pago')">Cancelar</button><button class="btn btn-gold" onclick="registrarPago()">Registrar</button></div>
+  </div>
+</div>
+
+<!-- MODAL CUENTA GENERAL -->
+<div class="ov" id="ov-cg">
+  <div class="modal modal-lg">
+    <div class="mh" id="cg-mh"><span class="mht" id="cg-mt">Cargar Cuenta</span><button class="mx" onclick="closeOv('ov-cg')">×</button></div>
+    <div class="mb">
+      <div class="fr2">
+        <div class="fg"><label class="label">Total Boleta ($)</label><input type="number" class="fi" id="cg-total" placeholder="0" oninput="recalcDist()"></div>
+        <div class="fg"><label class="label">N° Boleta / Referencia</label><input type="text" class="fi" id="cg-ref" placeholder="N° boleta"></div>
+      </div>
+      <div class="fg">
+        <label class="label">Adjunto (opcional)</label>
+        <div class="us" style="height:60px;flex-direction:row;gap:.65rem;min-height:0;">
+          <input type="file" accept="image/*,application/pdf" id="cg-file" onchange="hcgfile(this)">
+          <span>📄</span><span style="font-size:.8rem;color:var(--sage);">Arrastra o clic</span>
+          <span id="cg-fn" style="font-size:.73rem;color:var(--forest);font-weight:600;"></span>
+        </div>
+      </div>
+      <hr class="sep">
+      <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);margin-bottom:.7rem;">Distribución por parcela</div>
+      <div id="cg-dist-rows"></div>
+      <div id="cg-dist-info" style="font-size:.76rem;color:var(--sage);margin-top:.45rem;padding:.45rem .7rem;background:rgba(0,0,0,.03);border-radius:7px;"></div>
+    </div>
+    <div class="mf"><button class="btn btn-danger" onclick="closeOv('ov-cg')">Cancelar</button><button class="btn btn-gold" onclick="guardarCG()">Guardar y Distribuir</button></div>
+  </div>
+</div>
+
+<!-- MODAL DETALLE -->
+<div class="ov" id="ov-det">
+  <div class="modal">
+    <div class="mh"><span class="mht" id="det-title">Detalle</span><button class="mx" onclick="closeOv('ov-det')">×</button></div>
+    <div class="mb" id="det-body"></div>
+    <div class="mf"><button class="btn btn-ghost" onclick="closeOv('ov-det')">Cerrar</button><button class="btn btn-gold" id="det-pay">💳 Pagar</button></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const MESES=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+const DEFAULT_PARCELAS=[
+  {id:1,nombre:'Parcela 1',propietario:'Familia García'},
+  {id:2,nombre:'Parcela 2',propietario:'Familia Rodríguez'},
+  {id:3,nombre:'Parcela 3',propietario:'Familia Martínez'},
+  {id:4,nombre:'Parcela 4',propietario:'Familia López'},
+  {id:5,nombre:'Parcela 5',propietario:'Familia Hernández'},
+  {id:6,nombre:'Parcela 6',propietario:'Familia González'},
+  {id:7,nombre:'Parcela 7',propietario:'Familia Pérez'},
+  {id:8,nombre:'Parcela 8',propietario:'Familia Sánchez'},
+  {id:9,nombre:'Parcela 9',propietario:'Familia Ramírez'},
+];
+let PARCELAS=loadParcelas();
+const TIPOS={
+  electric:{label:'Electricidad',icon:'⚡',dot:'cd-e',hico:'hie',unit:'kWh'},
+  common:  {label:'Áreas Comunes',icon:'🏮',dot:'cd-c',hico:'hic',unit:'kWh'},
+  water:   {label:'Agua Potable',icon:'💧',dot:'cd-w',hico:'hiw',unit:'m³'},
+  well:    {label:'Agua de Pozo',icon:'🪣',dot:'cd-p',hico:'hip',unit:'m³'},
+};
+// splitMode: 'proportional' = divided by consumption, 'equal' = divided equally among 9
+const CG_TYPES={
+  cge:    {label:'CGE Electricidad',icon:'⚡',tipoReparto:'electric',splitMode:'proportional'},
+  common: {label:'Áreas Comunes',   icon:'🏮',tipoReparto:'common',  splitMode:'equal'},
+  aguas1: {label:'Aguas Andinas 1', icon:'💧',tipoReparto:'water',   splitMode:'proportional'},
+  aguas2: {label:'Aguas Andinas 2', icon:'💧',tipoReparto:'water',   splitMode:'proportional'},
+  pozo:   {label:'Pozo (Eléctrico)',icon:'🪣',tipoReparto:'well',    splitMode:'proportional'},
+};
+const DUE_DAY=5, N=9;
+
+// STATE
+let DB=loadDB();
+const NOW=new Date();
+let activeMes=NOW.getMonth(), activeAnio=NOW.getFullYear();
+let cgCtx={tipo:null,mes:null,anio:null};
+let SF={e:null,w:null,p:null,c:null}; // slot files b64
+let AD={e:false,w:false,p:false,c:false}; // ai done
+
+function loadDB(){
+  try{const s=localStorage.getItem('dp5');return s?JSON.parse(s):{lecturas:[],lecturaComun:[],pagos:[],cuentasGenerales:[]};}
+  catch{return{lecturas:[],lecturaComun:[],pagos:[],cuentasGenerales:[]};}
+}
+function saveDB(){localStorage.setItem('dp5',JSON.stringify(DB));}
+function loadParcelas(){
+  try{const s=localStorage.getItem('dp5-parcelas');return s?JSON.parse(s):JSON.parse(JSON.stringify(DEFAULT_PARCELAS));}
+  catch{return JSON.parse(JSON.stringify(DEFAULT_PARCELAS));}
+}
+function saveParcelas(){localStorage.setItem('dp5-parcelas',JSON.stringify(PARCELAS));}
+let editingParcelaId=null;
+
+// INIT
+window.addEventListener('DOMContentLoaded',()=>{
+  popSelects();
+  // Init Supabase
+  SB=loadSBConfig();
+  if(SB){startSync();cargarPendientes();}
+  renderDashboard();renderParcelas();renderCG();renderReporte();renderHistorial();updateBadge();
+  document.querySelectorAll('.ov').forEach(el=>el.addEventListener('click',e=>{if(e.target===el)el.classList.remove('open');}));
+  document.getElementById('conf-c').addEventListener('input',updateCommonCost);
+  document.getElementById('com-tarifa').addEventListener('input',updateCommonCost);
+});
+
+function popSelects(){
+  const anios=[activeAnio-1,activeAnio];
+  ['dash-mes','med-mes','cg-mes','par-mes','rep-mes','pg-mes','com-mes'].forEach(id=>{
+    const s=document.getElementById(id);if(!s)return;
+    if(s.options.length===0){MESES.forEach((m,i)=>s.appendChild(new Option(m,i)));s.value=activeMes;}
+  });
+  ['dash-anio','med-anio','cg-anio','par-anio','rep-anio','pg-anio','com-anio'].forEach(id=>{
+    const s=document.getElementById(id);if(!s)return;
+    if(s.options.length===0){anios.forEach(y=>s.appendChild(new Option(y,y)));s.value=activeAnio;}
+  });
+  refreshParcelaSelects();
+}
+function refreshParcelaSelects(){
+  ['med-parcela','pg-parcela'].forEach(id=>{
+    const s=document.getElementById(id);if(!s)return;
+    const prev=s.value;
+    s.innerHTML='';
+    PARCELAS.forEach(p=>s.appendChild(new Option(p.nombre+' — '+p.propietario,p.id)));
+    if(prev) s.value=prev;
+  });
+}
+
+// NAV
+function showView(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
+  document.getElementById('view-'+id).classList.add('active');
+  document.getElementById('nav-'+id).classList.add('active');
+  if(id==='dashboard')renderDashboard();
+  if(id==='parcelas')renderParcelas();
+  if(id==='cuentas')renderCG();
+  if(id==='reporte')renderReporte();
+  if(id==='historial')renderHistorial();
+  if(id==='config')renderConfig();
+}
+function onMonthChange(){
+  activeMes=parseInt(document.getElementById('dash-mes').value);
+  activeAnio=parseInt(document.getElementById('dash-anio').value);
+  renderDashboard();
+}
+function switchTab(tab,e){
+  document.querySelectorAll('[id^="tp-"]').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tp-'+tab).classList.add('active');
+  e.target.classList.add('active');
+}
+
+// ALERTS
+function getLateAlerts(){
+  const today=new Date(),al=[];
+  for(let a=activeAnio-1;a<=activeAnio;a++){
+    for(let m=0;m<12;m++){
+      const due=new Date(a,m+1,DUE_DAY);
+      if(due>=today)continue;
+      PARCELAS.forEach(p=>{
+        ['electric','common','water','well'].forEach(tipo=>{
+          const monto=getMontoP(p.id,tipo,m,a);
+          if(!monto)return;
+          if(!DB.pagos.find(pg=>pg.parcelaId==p.id&&pg.tipo===tipo&&pg.mes==m&&pg.anio==a)){
+            al.push({parcela:p,tipo,mes:m,anio:a,monto,dias:Math.floor((today-due)/864e5)});
+          }
+        });
+      });
+    }
+  }
+  return al;
+}
+function updateBadge(){
+  const al=getLateAlerts();
+  const b=document.getElementById('alert-count');
+  b.style.display=al.length?'flex':'none';b.textContent=al.length;
+}
+function renderAlerts(cid){
+  const al=getLateAlerts();
+  const el=document.getElementById(cid);if(!el)return;
+  if(!al.length){el.innerHTML='';return;}
+  el.innerHTML=`<div class="ab"><span style="font-size:1.3rem;flex-shrink:0;">🔴</span><div>
+    <div class="at">⚠️ ${al.length} pago(s) atrasado(s) — vence el día ${DUE_DAY} del mes siguiente</div>
+    <ul class="al">${al.map(a=>`<li>${a.parcela.nombre} · ${TIPOS[a.tipo].label} · ${MESES[a.mes]} ${a.anio} · $${fmt(a.monto)} · <strong>${a.dias} días atrasado</strong></li>`).join('')}</ul>
+  </div></div>`;
+}
+
+// DATA
+function getMontoP(pid,tipo,mes,anio){
+  if(tipo==='common'){
+    const cg=DB.cuentasGenerales.find(c=>c.tipo==='common'&&c.mes==mes&&c.anio==anio);
+    return cg?Math.round(cg.total/N):0;
+  }
+  const lec=DB.lecturas.find(l=>l.parcelaId==pid&&l.tipo===tipo&&l.mes==mes&&l.anio==anio);
+  return lec?lec.monto:0;
+}
+function getPago(pid,tipo,mes,anio){return DB.pagos.find(pg=>pg.parcelaId==pid&&pg.tipo===tipo&&pg.mes==mes&&pg.anio==anio)||null;}
+function getCuentas(pid,mes,anio){
+  const r={};
+  ['electric','common','water','well'].forEach(tipo=>{
+    const monto=getMontoP(pid,tipo,mes,anio);
+    const lec=tipo!=='common'?DB.lecturas.find(l=>l.parcelaId==pid&&l.tipo===tipo&&l.mes==mes&&l.anio==anio):null;
+    r[tipo]={monto,pagado:!!getPago(pid,tipo,mes,anio),valor:lec?lec.valor:null,consumo:lec?lec.consumo:null};
+  });
+  return r;
+}
+function isLate(pid,mes,anio){
+  const today=new Date(),due=new Date(anio,mes+1,DUE_DAY);
+  if(today<due)return false;
+  return['electric','common','water','well'].some(t=>getMontoP(pid,t,mes,anio)>0&&!getPago(pid,t,mes,anio));
+}
+function getCommonMonto(mes,anio){
+  const cg=DB.cuentasGenerales.find(c=>c.tipo==='common'&&c.mes==mes&&c.anio==anio);
+  return cg?{total:cg.total,per:Math.round(cg.total/N)}:{total:0,per:0};
+}
+function recalcAllMontos(){
+  DB.lecturas.forEach(lec=>{
+    const cgTipos=Object.entries(CG_TYPES).filter(([,v])=>v.tipoReparto===lec.tipo&&v.splitMode==='proportional').map(([k])=>k);
+    let monto=0;
+    cgTipos.forEach(cgt=>{
+      const cg=DB.cuentasGenerales.find(c=>c.tipo===cgt&&c.mes===lec.mes&&c.anio===lec.anio);
+      if(cg&&cg.distribucion){const d=cg.distribucion.find(x=>x.parcelaId===lec.parcelaId);if(d)monto+=d.monto;}
+    });
+    lec.monto=Math.round(monto);
+  });
+}
+
+// DASHBOARD
+function renderDashboard(){
+  const mes=activeMes,anio=activeAnio;
+  document.getElementById('dash-mes-label').textContent=MESES[mes]+' '+anio;
+  renderAlerts('alert-banners');updateBadge();
+  const cm=getCommonMonto(mes,anio);
+  document.getElementById('cmb-total').textContent='$'+fmt(cm.total);
+  document.getElementById('cmb-per').textContent='$'+fmt(cm.per)+' / parcela';
+  let tE=0,tC=cm.total,tW=0,tP=0,pagadas=0;
+  const grid=document.getElementById('dash-parcelas');grid.innerHTML='';
+  PARCELAS.forEach(p=>{
+    const c=getCuentas(p.id,mes,anio);
+    tE+=c.electric.monto;tW+=c.water.monto;tP+=c.well.monto;
+    const types=['electric','common','water','well'];
+    const hasAny=types.some(t=>c[t].monto>0);
+    if(hasAny&&types.every(t=>c[t].pagado||c[t].monto===0))pagadas++;
+    grid.innerHTML+=pCardHTML(p,c,mes,anio,isLate(p.id,mes,anio));
+  });
+  document.getElementById('s-elec').textContent=fmt(tE);
+  document.getElementById('s-common').textContent=fmt(tC);
+  document.getElementById('s-agua').textContent=fmt(tW);
+  document.getElementById('s-pozo').textContent=fmt(tP);
+  document.getElementById('s-total').textContent=fmt(tE+tC+tW+tP);
+  document.getElementById('s-pagado').textContent=pagadas+'/9 al día';
+}
+
+function pCardHTML(p,c,mes,anio,late){
+  const total=c.electric.monto+c.common.monto+c.water.monto+c.well.monto;
+  const types=['electric','common','water','well'];
+  const hasAny=types.some(t=>c[t].monto>0);
+  const allPaid=types.every(t=>c[t].pagado||c[t].monto===0);
+  const nonePaid=types.every(t=>!c[t].pagado);
+  let spcls='sp-pend',sptxt='Sin datos';
+  if(hasAny){
+    if(late){spcls='sp-late';sptxt='⚠️ Atrasado';}
+    else if(allPaid){spcls='sp-ok';sptxt='✓ Al día';}
+    else if(nonePaid){spcls='sp-pend';sptxt='Pendiente';}
+    else{spcls='sp-partial';sptxt='Parcial';}
+  }
+  return`<div class="pc">
+    <div class="pch"><div><div class="pct">${p.nombre}</div><div class="pco">${p.propietario}</div></div><span class="sp ${spcls}">${sptxt}</span></div>
+    <div class="crw">
+      ${crHTML('electric',c.electric,'⚡ Electricidad',late)}
+      ${crHTML('common',c.common,'🏮 Áreas Comunes',late)}
+      ${crHTML('water',c.water,'💧 Agua Potable',late)}
+      ${crHTML('well',c.well,'🪣 Agua de Pozo',late)}
+    </div>
+    <div class="pcf">
+      <div><div class="fl2">Total ${MESES[mes]}</div><div class="ft">$${fmt(total)}</div></div>
+      <div class="br">
+        <button class="btn btn-ghost btn-sm" onclick="verDetalle(${p.id})">Detalle</button>
+        <button class="btn btn-gold btn-sm" onclick="openPagoFor(${p.id})">💳 Pagar</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function crHTML(tipo,c,label,late){
+  let tc='mt-pend',tt='Pendiente';
+  if(c.pagado){tc='mt-ok';tt='✓ Pagado';}
+  else if(late&&c.monto>0){tc='mt-late';tt='⚠️ Atrasado';}
+  const isC=tipo==='common';
+  const unit=TIPOS[tipo].unit;
+  const rd=c.valor!=null?`<div style="font-size:.68rem;color:var(--sage);">${c.valor} ${unit}${c.consumo!=null?' · '+c.consumo+' consumido':''}</div>`:'';
+  return`<div class="cr">
+    <div class="crl"><div class="cd ${TIPOS[tipo].dot}"></div><div><div class="cn">${label}</div>${rd}</div></div>
+    <div class="crr">
+      <span class="ca${c.pagado?' paid':''}" style="${isC?'color:var(--common);':''}">$${fmt(c.monto)}</span>
+      ${c.monto>0?`<span class="mt ${tc}">${tt}</span>`:'<span class="mt mt-pend" style="opacity:.4">—</span>'}
+    </div>
+  </div>`;
+}
+
+// PARCELAS
+function renderParcelas(){
+  const mes=parseInt(document.getElementById('par-mes').value);
+  const anio=parseInt(document.getElementById('par-anio').value);
+  renderAlerts('alert-banners-par');
+  const grid=document.getElementById('parcelas-grid');grid.innerHTML='';
+  PARCELAS.forEach(p=>grid.innerHTML+=pCardHTML(p,getCuentas(p.id,mes,anio),mes,anio,isLate(p.id,mes,anio)));
+}
+
+// DETALLE
+function verDetalle(pid){
+  const p=PARCELAS.find(x=>x.id===pid);
+  const mes=activeMes,anio=activeAnio;
+  const c=getCuentas(pid,mes,anio);
+  const late=isLate(pid,mes,anio);
+  document.getElementById('det-title').textContent=p.nombre+' · '+MESES[mes]+' '+anio;
+  document.getElementById('det-pay').onclick=()=>{closeOv('ov-det');openPagoFor(pid);};
+  let html='<div>';
+  ['electric','common','water','well'].forEach(t=>html+=crHTML(t,c[t],TIPOS[t].icon+' '+TIPOS[t].label,late));
+  const total=Object.values(c).reduce((s,x)=>s+x.monto,0);
+  html+=`<div style="text-align:right;margin-top:.65rem;font-family:'Libre Baskerville',serif;font-size:1.15rem;color:var(--forest);">Total: $${fmt(total)}</div></div>`;
+  const lecs=DB.lecturas.filter(l=>l.parcelaId==pid).sort((a,b)=>b.id-a.id).slice(0,6);
+  if(lecs.length){
+    html+='<div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);margin:1rem 0 .45rem;">Lecturas recientes</div>';
+    lecs.forEach(l=>{
+      const t=TIPOS[l.tipo];
+      html+=`<div class="hi" style="margin-bottom:.35rem;padding:.55rem .75rem;"><div class="hii"><div class="hico ${t.hico}">${t.icon}</div>
+        <div><div class="hn">${t.label}</div><div class="hs">${MESES[l.mes]} ${l.anio} · ${l.valor} ${t.unit} · consumo: ${l.consumo}</div></div></div>
+        <div class="ha">$${fmt(l.monto)}</div></div>`;
+    });
+  }
+  document.getElementById('det-body').innerHTML=html;
+  openOv('ov-det');
+}
+
+// MEDIDORES INDIVIDUAL
+function dov(e,s){e.preventDefault();document.getElementById('slot-'+s).classList.add('drag');}
+function dlv(s){document.getElementById('slot-'+s).classList.remove('drag');}
+function ddr(e,s){e.preventDefault();dlv(s);if(e.dataTransfer.files[0])hslotFile(s,e.dataTransfer.files[0]);}
+function hslot(s,inp){if(inp.files[0])hslotFile(s,inp.files[0]);}
+function hslotFile(s,file){
+  const r=new FileReader();
+  r.onload=e=>{
+    SF[s]=e.target.result.split(',')[1];AD[s]=false;
+    const pv=document.getElementById('prev-'+s);pv.src=e.target.result;pv.style.display='block';
+    document.getElementById('read-'+s).style.display='none';
+    readAI(s);
+  };
+  r.readAsDataURL(file);
+}
+const SLBL={e:'medidor eléctrico individual en kWh',w:'medidor de agua potable en m³',p:'medidor de agua de pozo en m³',c:'remarcador eléctrico de áreas comunes en kWh'};
+async function readAI(s){
+  const spin=document.getElementById('spin-'+s);
+  const rdEl=document.getElementById('read-'+s);
+  spin.style.display='block';rdEl.style.display='none';
+  const prompt=`Eres experto en lectura de ${SLBL[s]}. Analiza la imagen y extrae el valor numérico del display o diales. Responde ÚNICAMENTE con JSON válido: {"valor":12345,"confianza":"alta|media|baja","nota":"observación"} Si no puedes leer usa valor:0 y confianza:"baja".`;
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,
+        messages:[{role:'user',content:[{type:'image',source:{type:'base64',media_type:'image/jpeg',data:SF[s]}},{type:'text',text:prompt}]}]
+      })
+    });
+    const data=await resp.json();
+    const txt=data.content?.map(c=>c.text||'').join('')||'';
+    const parsed=JSON.parse(txt.replace(/```json|```/g,'').trim());
+    spin.style.display='none';
+    const units={e:'kWh',w:'m³',p:'m³',c:'kWh'};
+    rdEl.textContent=parsed.valor+' '+units[s];rdEl.style.display='block';
+    if(s==='c'){document.getElementById('conf-c').value=parsed.valor;updateCommonCost();}
+    else{
+      const cids={e:'conf-e',w:'conf-w',p:'conf-p'};
+      const dids={e:'ai-val-e',w:'ai-val-w',p:'ai-val-p'};
+      document.getElementById(cids[s]).value=parsed.valor;
+      document.getElementById(dids[s]).textContent=parsed.valor;
+    }
+    AD[s]=true;checkAIBox();
+  }catch{
+    spin.style.display='none';rdEl.textContent='Error — ingresa manualmente';rdEl.style.display='block';
+    AD[s]=true;checkAIBox();
+  }
+}
+function checkAIBox(){if(AD.e||AD.w||AD.p)document.getElementById('ai-box').classList.add('vis');}
+
+function guardarLecturas(){
+  const pid=parseInt(document.getElementById('med-parcela').value);
+  const mes=parseInt(document.getElementById('med-mes').value);
+  const anio=parseInt(document.getElementById('med-anio').value);
+  if(!pid)return toast('Selecciona una parcela','err');
+  let saved=0;
+  [{tipo:'electric',cid:'conf-e'},{tipo:'water',cid:'conf-w'},{tipo:'well',cid:'conf-p'}].forEach(({tipo,cid})=>{
+    const val=parseFloat(document.getElementById(cid).value);
+    if(isNaN(val)||val<0)return;
+    const prev=DB.lecturas.filter(l=>l.parcelaId===pid&&l.tipo===tipo&&(l.anio<anio||(l.anio===anio&&l.mes<mes))).sort((a,b)=>a.anio!==b.anio?b.anio-a.anio:b.mes-a.mes)[0];
+    const consumo=prev?Math.max(0,val-prev.valor):val;
+    DB.lecturas=DB.lecturas.filter(l=>!(l.parcelaId===pid&&l.tipo===tipo&&l.mes===mes&&l.anio===anio));
+    DB.lecturas.push({id:Date.now()+Math.random(),parcelaId:pid,tipo,mes,anio,valor:val,consumo,anterior:prev?prev.valor:null,monto:0,fecha:new Date().toLocaleDateString('es-CL')});
+    saved++;
+  });
+  if(!saved)return toast('Ingresa al menos un valor','err');
+  recalcAllMontos();saveDB();
+  renderDashboard();renderParcelas();renderHistorial();
+  toast('✓ '+saved+' lectura(s) guardadas. Carga las boletas en "Cuentas" para calcular montos.','ok');
+  resetMedidores();
+}
+function resetMedidores(){
+  ['e','w','p'].forEach(s=>{
+    SF[s]=null;AD[s]=false;
+    document.getElementById('prev-'+s).style.display='none';
+    document.getElementById('read-'+s).style.display='none';
+    document.getElementById('spin-'+s).style.display='none';
+    try{document.getElementById('file-'+s).value='';}catch{}
+    document.getElementById({e:'conf-e',w:'conf-w',p:'conf-p'}[s]).value='';
+    document.getElementById({e:'ai-val-e',w:'ai-val-w',p:'ai-val-p'}[s]).textContent='—';
+  });
+  document.getElementById('ai-box').classList.remove('vis');
+}
+
+// AREAS COMUNES
+function updateCommonCost(){
+  const lecActual=parseFloat(document.getElementById('conf-c').value)||0;
+  const tarifa=parseFloat(document.getElementById('com-tarifa').value)||0;
+  const mes=parseInt(document.getElementById('com-mes').value);
+  const anio=parseInt(document.getElementById('com-anio').value);
+  const prev=DB.lecturaComun.filter(l=>l.anio<anio||(l.anio===anio&&l.mes<mes)).sort((a,b)=>a.anio!==b.anio?b.anio-a.anio:b.mes-a.mes)[0];
+  const consumo=prev?Math.max(0,lecActual-prev.valor):lecActual;
+  const total=Math.round(consumo*tarifa);
+  document.getElementById('com-consumo-lbl').textContent='Consumo: '+consumo+' kWh'+(prev?' (ant: '+prev.valor+')':' (primera lectura)');
+  document.getElementById('com-total-lbl').textContent='$'+fmt(total)+' total';
+  document.getElementById('com-per-lbl').textContent='$'+fmt(Math.round(total/N))+' / parcela';
+}
+function guardarCommon(){
+  const mes=parseInt(document.getElementById('com-mes').value);
+  const anio=parseInt(document.getElementById('com-anio').value);
+  const lecActual=parseFloat(document.getElementById('conf-c').value)||0;
+  const tarifa=parseFloat(document.getElementById('com-tarifa').value)||0;
+  if(!lecActual)return toast('Ingresa la lectura del remarcador','err');
+  if(!tarifa)return toast('Ingresa la tarifa CGE ($/kWh)','err');
+  const prev=DB.lecturaComun.filter(l=>l.anio<anio||(l.anio===anio&&l.mes<mes)).sort((a,b)=>a.anio!==b.anio?b.anio-a.anio:b.mes-a.mes)[0];
+  const consumo=prev?Math.max(0,lecActual-prev.valor):lecActual;
+  const total=Math.round(consumo*tarifa);
+  DB.lecturaComun=DB.lecturaComun.filter(l=>!(l.mes===mes&&l.anio===anio));
+  DB.lecturaComun.push({id:Date.now(),mes,anio,valor:lecActual,consumo,tarifa,anterior:prev?prev.valor:null,fecha:new Date().toLocaleDateString('es-CL')});
+  DB.cuentasGenerales=DB.cuentasGenerales.filter(c=>!(c.tipo==='common'&&c.mes===mes&&c.anio===anio));
+  DB.cuentasGenerales.push({id:Date.now()+1,tipo:'common',mes,anio,total,consumo,tarifa,ref:'Remarcador AC · '+lecActual+' kWh',
+    distribucion:PARCELAS.map(p=>({parcelaId:p.id,consumo:Math.round(consumo/N*10)/10,pct:100/N,monto:Math.round(total/N)})),
+    fecha:new Date().toLocaleDateString('es-CL')});
+  saveDB();renderCG();renderDashboard();renderParcelas();
+  toast('✓ Áreas Comunes guardado · $'+fmt(total)+' total · $'+fmt(Math.round(total/N))+' / parcela','ok');
+  SF.c=null;AD.c=false;
+  ['prev-c','read-c','spin-c'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
+  try{document.getElementById('file-c').value='';}catch{}
+}
+
+// CUENTAS GENERALES
+function renderCG(){
+  const mes=parseInt(document.getElementById('cg-mes').value);
+  const anio=parseInt(document.getElementById('cg-anio').value);
+  ['cge','common','aguas1','aguas2','pozo'].forEach(t=>renderCGPanel(t,mes,anio));
+}
+function renderCGPanel(tipo,mes,anio){
+  const cg=DB.cuentasGenerales.find(c=>c.tipo===tipo&&c.mes==mes&&c.anio==anio);
+  const info=CG_TYPES[tipo];
+  const el=document.getElementById('cg-'+tipo+'-body');if(!el)return;
+  const isC=tipo==='common';
+  let distHTML='';
+  if(cg&&cg.distribucion){
+    cg.distribucion.forEach(d=>{
+      const p=PARCELAS.find(x=>x.id===d.parcelaId);
+      distHTML+=`<div class="dr"><span class="dp">${p?.nombre}</span><span class="dpct">${isC?d.pct.toFixed(1)+'% (igual)':d.consumo+' '+TIPOS[info.tipoReparto].unit+' · '+d.pct.toFixed(1)+'%'}</span><span class="da">$${fmt(d.monto)}</span></div>`;
+    });
+  }
+  el.innerHTML=`<div class="cgc">
+    <div class="cgh" style="${isC?'border-left:4px solid var(--common);':''}">
+      <div><div class="cgt">${info.icon} ${info.label}</div><div style="font-size:.73rem;color:var(--sage);">${MESES[mes]} ${anio}</div></div>
+      <div style="display:flex;align-items:center;gap:.65rem;">
+        ${cg?`<div class="cga" style="${isC?'color:var(--common);':''}">${cg.consumo?cg.consumo+' kWh · ':''} $${fmt(cg.total)}</div>`:
+          '<div style="color:var(--sage);font-size:.83rem;">Sin datos</div>'}
+        ${!isC?`<button class="btn btn-gold btn-sm" onclick="openCGModal('${tipo}',${mes},${anio})">${cg?'✏️ Editar':'📥 Cargar'}</button>`:''}
+        ${isC?`<button class="btn btn-ghost btn-sm" onclick="showView('medidores')">→ Ir a Medidores</button>`:''}
+      </div>
+    </div>
+    ${cg&&cg.distribucion?`<div class="cgb">
+      ${isC?`<div style="background:rgba(123,63,160,.07);border-radius:7px;padding:.55rem .85rem;font-size:.78rem;color:var(--common);margin-bottom:.65rem;">🏮 Distribuido en <strong>9 partes iguales</strong> · $${fmt(Math.round(cg.total/N))} por parcela</div>`:''}
+      <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--sage);margin-bottom:.45rem;">Distribución por parcela</div>
+      ${distHTML}
+      ${cg.ref?`<div style="font-size:.7rem;color:var(--sage);margin-top:.45rem;">📄 ${cg.ref}</div>`:''}
+    </div>`:''}
+  </div>`;
+}
+function openCGModal(tipo,mes,anio){
+  const existing=DB.cuentasGenerales.find(c=>c.tipo===tipo&&c.mes==mes&&c.anio==anio);
+  cgCtx={tipo,mes,anio};
+  document.getElementById('cg-mt').textContent=CG_TYPES[tipo].icon+' '+CG_TYPES[tipo].label+' — '+MESES[mes]+' '+anio;
+  document.getElementById('cg-total').value=existing?existing.total:'';
+  document.getElementById('cg-ref').value=existing?existing.ref:'';
+  document.getElementById('cg-fn').textContent='';
+  recalcDist();
+  openOv('ov-cg');
+}
+function hcgfile(inp){if(inp.files[0])document.getElementById('cg-fn').textContent='📎 '+inp.files[0].name;}
+function recalcDist(){
+  const{tipo,mes,anio}=cgCtx;if(!tipo)return;
+  const total=parseFloat(document.getElementById('cg-total').value)||0;
+  const info=CG_TYPES[tipo];const tl=info.tipoReparto;
+  const rowEl=document.getElementById('cg-dist-rows');
+  const infoEl=document.getElementById('cg-dist-info');
+  if(!total){rowEl.innerHTML='<div style="color:var(--sage);font-size:.8rem;">Ingresa el total para ver la distribución</div>';infoEl.textContent='';return;}
+  const lecs=DB.lecturas.filter(l=>l.tipo===tl&&l.mes===mes&&l.anio===anio);
+  const totalC=lecs.reduce((s,l)=>s+l.consumo,0);
+  let html='';
+  PARCELAS.forEach(p=>{
+    const lec=lecs.find(l=>l.parcelaId===p.id);
+    const consumo=lec?lec.consumo:0;
+    const pct=totalC>0?consumo/totalC*100:100/N;
+    const monto=totalC>0?(consumo/totalC)*total:total/N;
+    html+=`<div class="dr"><span class="dp">${p.nombre}</span><span class="dpct">${consumo} ${TIPOS[tl].unit} · ${pct.toFixed(1)}%</span><span class="da">$${fmt(monto)}</span></div>`;
+  });
+  rowEl.innerHTML=html;
+  infoEl.innerHTML=totalC===0?'⚠️ Sin lecturas — distribución equitativa entre 9 parcelas':'✓ Basado en '+lecs.length+' lecturas · Total: '+totalC+' '+TIPOS[tl].unit;
+}
+function guardarCG(){
+  const{tipo,mes,anio}=cgCtx;
+  const total=parseFloat(document.getElementById('cg-total').value)||0;
+  const ref=document.getElementById('cg-ref').value;
+  if(!total)return toast('Ingresa el total de la boleta','err');
+  const info=CG_TYPES[tipo];const tl=info.tipoReparto;
+  const lecs=DB.lecturas.filter(l=>l.tipo===tl&&l.mes===mes&&l.anio===anio);
+  const totalC=lecs.reduce((s,l)=>s+l.consumo,0);
+  const distribucion=PARCELAS.map(p=>{
+    const lec=lecs.find(l=>l.parcelaId===p.id);
+    const consumo=lec?lec.consumo:0;
+    const pct=totalC>0?consumo/totalC*100:100/N;
+    const monto=totalC>0?(consumo/totalC)*total:total/N;
+    return{parcelaId:p.id,consumo,pct,monto};
+  });
+  DB.cuentasGenerales=DB.cuentasGenerales.filter(c=>!(c.tipo===tipo&&c.mes===mes&&c.anio===anio));
+  DB.cuentasGenerales.push({id:Date.now(),tipo,mes,anio,total,ref,distribucion,fecha:new Date().toLocaleDateString('es-CL')});
+  recalcAllMontos();saveDB();
+  closeOv('ov-cg');renderCG();renderDashboard();renderParcelas();
+  toast('✓ '+CG_TYPES[tipo].label+' guardado y distribuido','ok');
+}
+
+// PAGOS
+function openPagoModal(){
+  document.getElementById('pg-mes').value=activeMes;
+  document.getElementById('pg-anio').value=activeAnio;
+  openOv('ov-pago');
+}
+function openPagoFor(pid){
+  document.getElementById('pg-parcela').value=pid;
+  document.getElementById('pg-mes').value=activeMes;
+  document.getElementById('pg-anio').value=activeAnio;
+  openOv('ov-pago');
+}
+function registrarPago(){
+  const pid=parseInt(document.getElementById('pg-parcela').value);
+  const tipo=document.getElementById('pg-tipo').value;
+  const mes=parseInt(document.getElementById('pg-mes').value);
+  const anio=parseInt(document.getElementById('pg-anio').value);
+  const monto=parseFloat(document.getElementById('pg-monto').value)||0;
+  const metodo=document.getElementById('pg-metodo').value;
+  const ref=document.getElementById('pg-ref').value;
+  if(!pid)return toast('Selecciona una parcela','err');
+  if(!monto)return toast('Ingresa el monto','err');
+  DB.pagos=DB.pagos.filter(p=>!(p.parcelaId===pid&&p.tipo===tipo&&p.mes===mes&&p.anio===anio));
+  DB.pagos.push({id:Date.now(),parcelaId:pid,tipo,mes,anio,monto,metodo,ref,fecha:new Date().toLocaleDateString('es-CL')});
+  saveDB();closeOv('ov-pago');
+  renderDashboard();renderParcelas();renderHistorial();updateBadge();
+  toast('✓ Pago registrado — '+PARCELAS.find(x=>x.id===pid).nombre+' · '+TIPOS[tipo].label,'ok');
+}
+
+// REPORTE
+function renderReporte(){
+  const mes=parseInt(document.getElementById('rep-mes').value);
+  const anio=parseInt(document.getElementById('rep-anio').value);
+  const cm=getCommonMonto(mes,anio);
+  let tE=0,tC=cm.total,tW=0,tP=0,grand=0,pagadas=0;
+  let rows='';
+  PARCELAS.forEach(p=>{
+    const c=getCuentas(p.id,mes,anio);
+    const total=c.electric.monto+c.common.monto+c.water.monto+c.well.monto;
+    tE+=c.electric.monto;tW+=c.water.monto;tP+=c.well.monto;grand+=total;
+    const types=['electric','common','water','well'];
+    const hasAny=types.some(t=>c[t].monto>0);
+    if(hasAny&&types.every(t=>c[t].pagado||c[t].monto===0))pagadas++;
+    const late=isLate(p.id,mes,anio);
+    let pill='<span class="mt mt-pend">Sin datos</span>';
+    if(hasAny){
+      if(late)pill='<span class="mt mt-late">⚠️ Atrasado</span>';
+      else if(types.every(t=>c[t].pagado||c[t].monto===0))pill='<span class="mt mt-ok">✓ Pagado</span>';
+      else pill='<span class="mt mt-pend">Pendiente</span>';
+    }
+    rows+=`<tr>
+      <td><strong>${p.nombre}</strong><br><span style="font-size:.69rem;color:var(--sage)">${p.propietario}</span></td>
+      <td>$${fmt(c.electric.monto)}${c.electric.consumo!=null?'<br><span style="font-size:.67rem;color:var(--sage)">'+c.electric.consumo+' kWh</span>':''}</td>
+      <td style="color:var(--common);font-weight:600;">$${fmt(c.common.monto)}</td>
+      <td>$${fmt(c.water.monto)}${c.water.consumo!=null?'<br><span style="font-size:.67rem;color:var(--sage)">'+c.water.consumo+' m³</span>':''}</td>
+      <td>$${fmt(c.well.monto)}${c.well.consumo!=null?'<br><span style="font-size:.67rem;color:var(--sage)">'+c.well.consumo+' m³</span>':''}</td>
+      <td><strong>$${fmt(total)}</strong></td>
+      <td>${pill}</td>
+    </tr>`;
+  });
+  document.getElementById('reporte-body').innerHTML=`
+  <div class="rsum">
+    <div><div class="rtitle">${MESES[mes]} ${anio}</div><div class="rsub">Comunidad Don Patricio · ${pagadas}/9 parcelas al día</div></div>
+    <div style="text-align:right;"><div class="rtotal">$${fmt(grand)}</div><div style="font-size:.73rem;color:var(--gold-light)">Total facturado</div></div>
+  </div>
+  ${cm.total>0?`<div style="background:rgba(123,63,160,.09);border:1px solid rgba(123,63,160,.22);border-radius:9px;padding:.7rem 1rem;margin-bottom:1.1rem;font-size:.8rem;">
+    <strong style="color:var(--common);">🏮 Áreas Comunes:</strong> $${fmt(cm.total)} total · <strong>$${fmt(cm.per)} por parcela</strong> (9 partes iguales)
+  </div>`:''}
+  <div style="overflow-x:auto;"><table class="rtbl">
+    <thead><tr>
+      <th>Parcela</th><th>⚡ Electricidad</th><th class="pth">🏮 Áreas Comunes</th>
+      <th>💧 Agua Potable</th><th>🪣 Agua Pozo</th><th>Total</th><th>Estado</th>
+    </tr></thead>
+    <tbody>${rows}</tbody>
+    <tfoot><tr><td>TOTALES</td><td>$${fmt(tE)}</td><td>$${fmt(tC)}</td><td>$${fmt(tW)}</td><td>$${fmt(tP)}</td><td>$${fmt(grand)}</td><td>${pagadas}/9</td></tr></tfoot>
+  </table></div>`;
+}
+function exportCSV(){
+  const mes=parseInt(document.getElementById('rep-mes').value);
+  const anio=parseInt(document.getElementById('rep-anio').value);
+  let csv='Parcela,Propietario,Elec kWh,Elec $,AC $,Agua m3,Agua $,Pozo m3,Pozo $,Total $,Estado\n';
+  PARCELAS.forEach(p=>{
+    const c=getCuentas(p.id,mes,anio);
+    const total=c.electric.monto+c.common.monto+c.water.monto+c.well.monto;
+    const allOk=['electric','common','water','well'].every(t=>c[t].pagado||c[t].monto===0);
+    csv+='"'+p.nombre+'","'+p.propietario+'",'+(c.electric.consumo??'')+','+c.electric.monto+','+c.common.monto+','+(c.water.consumo??'')+','+c.water.monto+','+(c.well.consumo??'')+','+c.well.monto+','+total+',"'+(allOk?'Pagado':'Pendiente')+'"\n';
+  });
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));
+  a.download='reporte_donpatricio_'+MESES[mes]+'_'+anio+'.csv';
+  a.click();toast('✓ CSV exportado','ok');
+}
+
+// HISTORIAL
+function renderHistorial(){
+  const list=document.getElementById('hist-list');
+  const all=[
+    ...DB.lecturas.map(l=>({...l,kind:'lec'})),
+    ...DB.lecturaComun.map(l=>({...l,kind:'lec-c'})),
+    ...DB.pagos.map(p=>({...p,kind:'pago'})),
+    ...DB.cuentasGenerales.map(c=>({...c,kind:'cg'})),
+  ].sort((a,b)=>b.id-a.id).slice(0,80);
+  if(!all.length){list.innerHTML='<div class="empty"><div class="ei">📋</div><p>No hay registros aún</p></div>';return;}
+  list.innerHTML=all.map(item=>{
+    if(item.kind==='lec'){
+      const p=PARCELAS.find(x=>x.id==item.parcelaId);const t=TIPOS[item.tipo];
+      return`<div class="hi"><div class="hii"><div class="hico ${t.hico}">${t.icon}</div>
+        <div><div class="hn">${p?.nombre} · ${t.label}</div><div class="hs">📷 ${item.valor} ${t.unit} · consumo: ${item.consumo} · ${MESES[item.mes]} ${item.anio}</div><div class="hs">${item.fecha}</div></div></div>
+        <div class="ha">$${fmt(item.monto)}</div></div>`;
+    }else if(item.kind==='lec-c'){
+      return`<div class="hi"><div class="hii"><div class="hico hic">🏮</div>
+        <div><div class="hn">Áreas Comunes · Remarcador</div><div class="hs">📷 ${item.valor} kWh · consumo: ${item.consumo} · ${MESES[item.mes]} ${item.anio}</div><div class="hs">${item.fecha}</div></div></div>
+        <div class="ha" style="color:var(--common);">$${fmt(Math.round(item.consumo*(item.tarifa||0)))}</div></div>`;
+    }else if(item.kind==='pago'){
+      const p=PARCELAS.find(x=>x.id==item.parcelaId);const t=TIPOS[item.tipo]||{label:item.tipo,icon:'💳'};
+      return`<div class="hi"><div class="hii"><div class="hico hipay">💳</div>
+        <div><div class="hn">${p?.nombre} · ${t.label}</div><div class="hs">💰 ${item.metodo} · ${MESES[item.mes]} ${item.anio}${item.ref?' · '+item.ref:''}</div><div class="hs">${item.fecha}</div></div></div>
+        <div class="ha credit">$${fmt(item.monto)}</div></div>`;
+    }else{
+      const info=CG_TYPES[item.tipo]||{label:item.tipo,icon:'🧾'};const isC=item.tipo==='common';
+      return`<div class="hi"><div class="hii"><div class="hico ${isC?'hic':'hiw'}">🧾</div>
+        <div><div class="hn">Boleta ${info.label}</div><div class="hs">📄 ${MESES[item.mes]} ${item.anio}${item.ref?' · '+item.ref:''}</div><div class="hs">${item.fecha}</div></div></div>
+        <div class="ha" style="${isC?'color:var(--common);':''}">$${fmt(item.total)}</div></div>`;
+    }
+  }).join('');
+}
+
+// ═══════════════════════════════ SUPABASE & CONFIG ═══════════════════════════
+let SB=null;          // {url, key}
+let syncInterval=null;
+let pendingReportes=[];
+
+function loadSBConfig(){
+  try{
+    const c=JSON.parse(localStorage.getItem('dp5-supabase')||'{}');
+    if(c.url&&c.key) return c;
+  }catch{}
+  return null;
+}
+function saveSBConfig(url,key){
+  localStorage.setItem('dp5-supabase',JSON.stringify({url,key}));
+}
+
+function sbChanged(){
+  document.getElementById('sb-test-result').textContent='';
+  document.getElementById('sb-link-box').style.display='none';
+}
+
+async function guardarSB(){
+  const url=(document.getElementById('sb-url').value||'').trim().replace(/\/$/,'');
+  const key=(document.getElementById('sb-key').value||'').trim();
+  const res=document.getElementById('sb-test-result');
+  if(!url||!key){res.style.color='var(--alert)';res.textContent='⚠ Completa ambos campos';return;}
+
+  res.style.color='var(--sage)';res.textContent='Probando…';
+  try{
+    const resp=await fetch(`${url}/rest/v1/lecturas_pendientes?limit=1`,{
+      headers:{'apikey':key,'Authorization':'Bearer '+key}
+    });
+    if(!resp.ok) throw new Error('HTTP '+resp.status);
+    saveSBConfig(url,key);
+    SB={url,key};
+    res.style.color='var(--ok)';res.textContent='✓ Conexión exitosa';
+    updateSBBadge();
+    cargarPendientes();
+    startSync();
+    toast('✅ Supabase configurado correctamente','ok');
+  }catch(e){
+    res.style.color='var(--alert)';
+    res.textContent='✗ Error: '+e.message+'. Verifica la URL, la key y que hayas creado la tabla.';
+  }
+}
+
+function generarLink(){
+  if(!SB){toast('Guarda la configuración primero','err');return;}
+  const parcelasEnc=btoa(JSON.stringify(PARCELAS));
+  // Vecino file should be served from same folder — use relative path
+  const base=window.location.href.replace(/[^/]*$/,'');
+  const link=`${base}vecino-don-patricio.html?url=${encodeURIComponent(SB.url)}&key=${encodeURIComponent(SB.key)}&parcelas=${parcelasEnc}`;
+  document.getElementById('sb-link-text').textContent=link;
+  document.getElementById('sb-link-box').style.display='block';
+}
+
+function copiarLink(){
+  const txt=document.getElementById('sb-link-text').textContent;
+  navigator.clipboard.writeText(txt).then(()=>toast('¡Link copiado!','ok')).catch(()=>{
+    const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+    toast('¡Link copiado!','ok');
+  });
+}
+
+function updateSBBadge(){
+  const badge=document.getElementById('sb-status-badge');
+  if(SB){badge.style.background='var(--ok-bg)';badge.style.color='var(--ok)';badge.textContent='✓ Conectado';}
+  else{badge.style.background='rgba(0,0,0,.07)';badge.style.color='var(--sage)';badge.textContent='Sin configurar';}
+}
+
+async function cargarPendientes(){
+  const listEl=document.getElementById('pending-list');
+  if(!SB){listEl.innerHTML='<div style="font-size:.82rem;color:var(--sage);">Configura Supabase para ver los reportes</div>';return;}
+
+  listEl.innerHTML='<div style="font-size:.82rem;color:var(--sage);">Cargando…</div>';
+  try{
+    const resp=await fetch(`${SB.url}/rest/v1/lecturas_pendientes?estado=eq.pendiente&order=enviado_en.desc&limit=50`,{
+      headers:{'apikey':SB.key,'Authorization':'Bearer '+SB.key}
+    });
+    if(!resp.ok) throw new Error('HTTP '+resp.status);
+    pendingReportes=await resp.json();
+    renderPendingList();
+    updatePendingBadge();
+    renderPendingBannerDash();
+  }catch(e){
+    listEl.innerHTML='<div style="font-size:.8rem;color:var(--alert);">Error al cargar: '+e.message+'</div>';
+  }
+}
+
+function renderPendingList(){
+  const listEl=document.getElementById('pending-list');
+  if(!pendingReportes.length){
+    listEl.innerHTML='<div style="font-size:.83rem;color:var(--sage);text-align:center;padding:.75rem;">✓ Sin reportes pendientes</div>';
+    return;
+  }
+  const ICONS={electric:'⚡',water:'💧',well:'🪣'};
+  const LABS={electric:'Electricidad',water:'Agua Potable',well:'Agua de Pozo'};
+  const UNITS={electric:'kWh',water:'m³',well:'m³'};
+  listEl.innerHTML=pendingReportes.map(r=>{
+    const lecs=JSON.parse(r.lecturas||'[]');
+    const fecha=new Date(r.enviado_en).toLocaleString('es-CL',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
+    return`<div style="border:1.5px solid rgba(58,124,168,.2);border-radius:11px;padding:.85rem 1rem;margin-bottom:.7rem;background:rgba(58,124,168,.03);">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.55rem;">
+        <div>
+          <div style="font-weight:600;font-size:.9rem;">${r.parcela_nombre}</div>
+          <div style="font-size:.73rem;color:var(--sage);">${MESES[r.mes]} ${r.anio} · Enviado: ${fecha}</div>
+        </div>
+        <button class="btn btn-gold btn-sm" onclick="aprobarReporte(${r.id})">✅ Aprobar e importar</button>
+      </div>
+      <div style="display:flex;gap:.65rem;flex-wrap:wrap;">
+        ${lecs.map(l=>`<span style="background:rgba(0,0,0,.06);border-radius:7px;padding:2px 9px;font-size:.78rem;">${ICONS[l.tipo]} ${l.valor} ${UNITS[l.tipo]}</span>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function updatePendingBadge(){
+  const n=pendingReportes.length;
+  const b=document.getElementById('pending-badge');
+  b.style.display=n?'flex':'none';b.textContent=n;
+}
+
+function renderPendingBannerDash(){
+  const el=document.getElementById('pending-banner-dash');
+  if(!el)return;
+  const n=pendingReportes.length;
+  if(!n){el.innerHTML='';return;}
+  el.innerHTML=`<div style="background:rgba(58,124,168,.08);border:1.5px solid rgba(58,124,168,.25);border-radius:var(--r);padding:.9rem 1.1rem;margin-bottom:1.3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.65rem;">
+    <div style="display:flex;align-items:center;gap:.65rem;">
+      <span style="font-size:1.3rem;">📲</span>
+      <div><div style="font-weight:600;font-size:.88rem;color:var(--water);">${n} reporte${n>1?'s':''} de vecino${n>1?'s':''} esperando aprobación</div>
+        <div style="font-size:.75rem;color:var(--sage);">Ve a ⚙️ Config para aprobar e importar</div></div>
+    </div>
+    <button class="btn btn-water btn-sm" onclick="showView('config')">→ Ver reportes</button>
+  </div>`;
+}
+
+async function aprobarReporte(id){
+  if(!SB)return;
+  const reporte=pendingReportes.find(r=>r.id===id);
+  if(!reporte)return;
+
+  const lecs=JSON.parse(reporte.lecturas||'[]');
+  const ICONS={electric:'⚡',water:'💧',well:'🪣'};
+  const LABS={electric:'Electricidad',water:'Agua Potable',well:'Agua de Pozo'};
+  const UNITS={electric:'kWh',water:'m³',well:'m³'};
+
+  // Build confirm modal content
+  let html=`<div style="background:rgba(58,124,168,.07);border-radius:10px;padding:.85rem 1rem;margin-bottom:1rem;">
+    <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--water);margin-bottom:.35rem;">Reporte de vecino</div>
+    <div style="font-size:.9rem;font-weight:600;">${reporte.parcela_nombre}</div>
+    <div style="font-size:.78rem;color:var(--sage);">${MESES[reporte.mes]} ${reporte.anio} · ${reporte.propietario}</div>
+  </div>
+  <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--sage);margin-bottom:.5rem;">Lecturas a importar</div>`;
+
+  lecs.forEach(l=>{
+    const existente=DB.lecturas.find(x=>x.parcelaId===reporte.parcela_id&&x.tipo===l.tipo&&x.mes===reporte.mes&&x.anio===reporte.anio);
+    html+=`<div style="display:flex;align-items:center;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid rgba(0,0,0,.06);">
+      <div style="display:flex;align-items:center;gap:.55rem;">
+        <span style="font-size:1.1rem;">${ICONS[l.tipo]}</span>
+        <div><div style="font-size:.84rem;font-weight:600;">${LABS[l.tipo]}</div>
+        ${existente?`<div style="font-size:.7rem;color:var(--alert);">⚠️ Reemplaza: ${existente.valor} ${UNITS[l.tipo]}</div>`:'<div style="font-size:.7rem;color:var(--ok);">Nueva lectura</div>'}
+        </div>
+      </div>
+      <div style="font-family:\'Libre Baskerville\',serif;font-size:1.05rem;color:var(--forest);">${l.valor} ${UNITS[l.tipo]}</div>
+    </div>`;
+  });
+
+  document.getElementById('import-preview-content').innerHTML=html;
+  window._pendingApproveId=id;
+  window._pendingApproveReporte=reporte;
+  openOv('ov-import-preview');
+}
+
+async function confirmarImportacion(){
+  const reporte=window._pendingApproveReporte;
+  if(!reporte)return;
+  const lecs=JSON.parse(reporte.lecturas||'[]');
+  let count=0;
+
+  lecs.forEach(l=>{
+    const pid=reporte.parcela_id;
+    const prev=DB.lecturas.filter(x=>x.parcelaId===pid&&x.tipo===l.tipo&&(x.anio<reporte.anio||(x.anio===reporte.anio&&x.mes<reporte.mes))).sort((a,b)=>a.anio!==b.anio?b.anio-a.anio:b.mes-a.mes)[0];
+    const consumo=prev?Math.max(0,l.valor-prev.valor):l.valor;
+    DB.lecturas=DB.lecturas.filter(x=>!(x.parcelaId===pid&&x.tipo===l.tipo&&x.mes===reporte.mes&&x.anio===reporte.anio));
+    DB.lecturas.push({
+      id:Date.now()+Math.random(),
+      parcelaId:pid,tipo:l.tipo,mes:reporte.mes,anio:reporte.anio,
+      valor:l.valor,consumo,anterior:prev?prev.valor:null,
+      monto:0,fecha:new Date().toLocaleDateString('es-CL'),
+      importado:true,fuenteVecino:reporte.propietario
+    });
+    count++;
+  });
+
+  recalcAllMontos();saveDB();
+
+  // Mark as approved in Supabase
+  if(SB){
+    try{
+      await fetch(`${SB.url}/rest/v1/lecturas_pendientes?id=eq.${reporte.id}`,{
+        method:'PATCH',
+        headers:{'apikey':SB.key,'Authorization':'Bearer '+SB.key,'Content-Type':'application/json'},
+        body:JSON.stringify({estado:'aprobado'})
+      });
+    }catch(e){console.warn('Could not update Supabase status',e);}
+  }
+
+  pendingReportes=pendingReportes.filter(r=>r.id!==reporte.id);
+  closeOv('ov-import-preview');
+  renderPendingList();updatePendingBadge();renderPendingBannerDash();
+  renderDashboard();renderParcelas();renderHistorial();renderReporte();
+  toast('✅ '+count+' lectura(s) importadas de '+reporte.parcela_nombre,'ok');
+  window._pendingApproveId=null;window._pendingApproveReporte=null;
+}
+
+function startSync(){
+  if(syncInterval) clearInterval(syncInterval);
+  syncInterval=setInterval(()=>{
+    if(SB) cargarPendientes();
+  },30000); // every 30 seconds
+}
+
+function renderConfig(){
+  // Load saved SB config into fields
+  SB=loadSBConfig();
+  if(SB){
+    document.getElementById('sb-url').value=SB.url||'';
+    document.getElementById('sb-key').value=SB.key||'';
+  }
+  updateSBBadge();
+  cargarPendientes();
+  const el=document.getElementById('config-table');
+  el.innerHTML=`<table class="cfg-table">
+    <thead><tr><th style="width:50px;">#</th><th>Parcela</th><th>Propietario</th><th style="width:90px;text-align:center;">Acción</th></tr></thead>
+    <tbody>
+      ${PARCELAS.map(p=>`<tr>
+        <td><div class="cfg-num">${p.id}</div></td>
+        <td><div class="cfg-nombre">${p.nombre}</div></td>
+        <td><div class="cfg-prop">${p.propietario}</div></td>
+        <td style="text-align:center;"><button class="btn btn-ghost btn-sm" onclick="openEditParcela(${p.id})">✏️ Editar</button></td>
+      </tr>`).join('')}
+    </tbody>
+  </table>
+  <div style="margin-top:1.1rem;padding-top:1rem;border-top:1px solid rgba(0,0,0,.07);font-size:.78rem;color:var(--sage);">
+    💡 Los nombres se usan en todas las vistas, reportes y alertas. Los datos (lecturas, pagos) no se ven afectados al renombrar.
+  </div>`;
+}
+function openEditParcela(id){
+  const p=PARCELAS.find(x=>x.id===id);
+  if(!p)return;
+  editingParcelaId=id;
+  document.getElementById('edit-p-title').textContent='Editar — '+p.nombre;
+  document.getElementById('edit-p-nombre').value=p.nombre;
+  document.getElementById('edit-p-propietario').value=p.propietario;
+  openOv('ov-edit-parcela');
+}
+function guardarParcela(){
+  const nombre=(document.getElementById('edit-p-nombre').value||'').trim();
+  const propietario=(document.getElementById('edit-p-propietario').value||'').trim();
+  if(!nombre)return toast('El nombre no puede estar vacío','err');
+  const p=PARCELAS.find(x=>x.id===editingParcelaId);
+  if(!p)return;
+  p.nombre=nombre;
+  p.propietario=propietario||p.propietario;
+  saveParcelas();
+  closeOv('ov-edit-parcela');
+  renderConfig();
+  refreshParcelaSelects();
+  renderDashboard();
+  renderParcelas();
+  toast('✓ '+nombre+' actualizado correctamente','ok');
+}
+
+// UTILS
+function fmt(n){return Math.round(n).toLocaleString('es-CL');}
+function toast(msg,type='inf'){
+  const el=document.getElementById('toast');el.textContent=msg;el.className='toast '+type+' show';
+  setTimeout(()=>el.classList.remove('show'),3800);
+}
+function openOv(id){document.getElementById(id).classList.add('open');}
+function closeOv(id){document.getElementById(id).classList.remove('open');}
+</script>
+</body>
+</html>
